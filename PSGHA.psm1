@@ -72,6 +72,8 @@ function Get-GitHubToken {
     if ($null -eq $token -or $token.Trim().Length() -eq 0) {
         throw "GitHub Token not found"
     }
+
+    $token
 }
 
 function Get-PullURI {
