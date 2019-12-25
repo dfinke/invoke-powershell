@@ -77,14 +77,6 @@ function Get-GitHubToken {
     # $token
 }
 
-function Show-GitHubToken {
-    $r = Get-GitHubToken
-
-    $r
-    ''
-    $r.GetType()
-}
-
 function Get-PullURI {
     $URI = "https://api.github.com"
     "${URI}/repos/$(Get-RepoFullname)/pulls"
