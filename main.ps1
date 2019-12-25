@@ -4,7 +4,7 @@ Import-Module /workdir/PSGHA.psm1
 
 $eventPayload = Get-GitHub
 
-$body = @{'body' = "[$(Get-Date)] hello world" } | ConvertTo-Json
+$body = @{'body' = "[$(Get-Date)] Comment added by your friendly neighborhood github action" } | ConvertTo-Json
 
 $irmParams = @{
     # Uri     = $eventPayload.issue.comments_url
@@ -15,12 +15,3 @@ $irmParams = @{
 }
 
 Invoke-RestMethod @irmParams
-
-# ''
-# 'Show-GitHubToken'
-# ''
-# Get-GitHubToken
-# (Get-GitHubToken).GetType()
-
-
-#$eventPayload | ConvertTo-Json -depth 5
