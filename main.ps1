@@ -2,6 +2,7 @@
 
 "args"
 ""
+$args.Count
 $args
 
 "env"
