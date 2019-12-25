@@ -12,7 +12,7 @@ $Header = @{
 $body = @{'body' = "hello world" } | ConvertTo-Json
 
 $irmParams = @{
-    Uri     = "$($eventPayload.issue.url)/comments"
+    Uri     = $eventPayload.issue.comments_url
     Method  = "Post"
     Headers = $Header
     Body    = $body
@@ -20,4 +20,4 @@ $irmParams = @{
 
 Invoke-RestMethod @irmParams
 
-$eventPayload | ConvertTo-Json -depth 5
+#$eventPayload | ConvertTo-Json -depth 5
