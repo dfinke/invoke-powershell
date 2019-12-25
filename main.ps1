@@ -1,5 +1,7 @@
 "Hello from GitHub Actions"
 
+Import-Module /workdir/PSGHA.psm1
+
 "args"
 ""
 $args.Count
