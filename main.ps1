@@ -14,4 +14,8 @@ Get-ChildItem env:
 
 "GITHUB_EVENT_PATH"
 ""
-Get-Content $env:GITHUB_EVENT_PATH
+Get-GitHub
+
+"Repository"
+""
+Get-Repository
