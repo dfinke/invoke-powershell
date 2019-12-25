@@ -2,20 +2,20 @@
 
 Import-Module /workdir/PSGHA.psm1
 
-"args"
-""
-$args.Count
-$args
+# "args"
+# ""
+# $args.Count
+# $args
 
-"env"
-""
-Get-ChildItem env:
+# "env"
+# ""
+# Get-ChildItem env:
 
 
-"GITHUB_EVENT_PATH"
-""
-Get-GitHub
+# "GITHUB_EVENT_PATH"
+# ""
+Get-GitHub -Raw
 
-"Repository"
-""
-Get-Repository
+# "Repository"
+# ""
+# Get-Repository
