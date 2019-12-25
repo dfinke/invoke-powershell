@@ -95,12 +95,12 @@ function Get-Header {
 
 function Get-Body {
     @"
-        {
-            "title": "$(Get-CommitMessage)",
-            "head": "$(Get-Ref)",
-            "base": "$(Get-DefaultBranch)"
-        }
-        "@
+{
+    "title": "$(Get-CommitMessage)",
+    "head": "$(Get-Ref)",
+    "base": "$(Get-DefaultBranch)"
+}
+"@
 }
 
 function Get-InvokeRestMethodParams {
