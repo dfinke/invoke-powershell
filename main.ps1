@@ -4,17 +4,20 @@ Import-Module /workdir/PSGHA.psm1
 
 $eventPayload = Get-GitHub
 
-$GITHUB_TOKEN = $env:GITHUB_TOKEN
-$Header = @{
-    Authorization = "token $GITHUB_TOKEN"
+function Get-AuthorizedHeader {
+    $GITHUB_TOKEN = $env:GITHUB_TOKEN
+    @{
+        Authorization = "token $GITHUB_TOKEN"
+    }
 }
 
-$body = @{'body' = "hello world" } | ConvertTo-Json
+$body = @{'body' = "[$(Get-Date)] hello world" } | ConvertTo-Json
 
 $irmParams = @{
-    Uri     = $eventPayload.issue.comments_url
+    # Uri     = $eventPayload.issue.comments_url
     Method  = "Post"
-    Headers = $Header
+    Uri     = Get-CommentsUrl
+    Headers = Get-Header
     Body    = $body
 }
 
