@@ -2,20 +2,20 @@
 
 Import-Module /workdir/PSGHA.psm1
 
-# "args"
-# ""
-# $args.Count
-# $args
+$eventPayload = Get-GitHub
 
-# "env"
-# ""
-# Get-ChildItem env:
+$GITHUB_TOKEN = $env:GITHUB_TOKEN
+$Header = @{
+    Authorization = "token $GITHUB_TOKEN"
+}
 
+$body = @{'body' = "hello world" } | ConvertTo-Json
 
-# "GITHUB_EVENT_PATH"
-# ""
-Get-GitHub -Raw
+$irmParams = @{
+    Uri     = "$($eventPayload.issue.url)/comments"
+    Method  = "Post"
+    Headers = $Header
+    Body    = $body
+}
 
-# "Repository"
-# ""
-# Get-Repository
+Invoke-RestMethod @irmParams
