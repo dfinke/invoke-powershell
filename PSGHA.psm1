@@ -68,12 +68,13 @@ function Get-Ref {
 }
 
 function Get-GitHubToken {
-    $token = $env:GITHUB_TOKEN
-    if ($null -eq $token -or $token.Trim().Length() -eq 0) {
-        throw "GitHub Token not found"
-    }
+    $env:GITHUB_TOKEN
+    # $token = $env:GITHUB_TOKEN
+    # if ($null -eq $token -or $token.Trim().Length() -eq 0) {
+    #     throw "GitHub Token not found"
+    # }
 
-    $token
+    # $token
 }
 
 function Get-PullURI {
