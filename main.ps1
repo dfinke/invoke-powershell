@@ -19,3 +19,5 @@ $irmParams = @{
 }
 
 Invoke-RestMethod @irmParams
+
+$eventPayload | ConvertTo-Json -depth 5
