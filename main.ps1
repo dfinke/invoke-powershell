@@ -23,4 +23,6 @@ $irmParams = @{
 
 Invoke-RestMethod @irmParams
 
+Show-GitHubToken
+
 #$eventPayload | ConvertTo-Json -depth 5
