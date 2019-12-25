@@ -51,6 +51,10 @@ function Get-CommitMessage {
     (Get-GitHub).head_commit.message
 }
 
+function Get-CommentsUrl {
+    (Get-GitHub).issue.comments_url
+}
+
 function Get-RepoFullname {
     (Get-GitHub).repository.full_name
 }
@@ -63,10 +67,10 @@ function Get-Ref {
     $env:GITHUB_REF
 }
 
-function Get-RepoToken {
-    $token = $env:INPUT_REPOTOKEN
+function Get-GitHubToken {
+    $token = $env:GITHUB_TOKEN
     if ($null -eq $token -or $token.Trim().Length() -eq 0) {
-        $token = "Token not found"
+        throw "GitHub Token not found"
     }
 }
 
@@ -77,7 +81,7 @@ function Get-PullURI {
 
 function Get-Header {
     @{
-        Authorization = "token $(Get-RepoToken)"
+        Authorization = "token $(Get-GitHubToken)"
     }
 }
 
@@ -113,7 +117,7 @@ function Get-AllSettings {
         "RepoFullname"           = (Get-RepoFullname)
         "DefaultBranch"          = (Get-DefaultBranch)
         "Ref"                    = (Get-Ref)
-        "RepoToken"              = (Get-RepoToken)
+        "GitHubToken"            = (Get-GitHubToken)
         "PullURI"                = (Get-PullURI)
         "Header"                 = (Get-Header)
         "Body"                   = (Get-Body)
