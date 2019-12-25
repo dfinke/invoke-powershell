@@ -1,0 +1,9 @@
+name: invoke-powershell
+description: invokes powershell
+author: dfinke
+branding:
+  color: blue
+  icon: package
+runs:
+  using: 'powershell'
+  main: 'main.ps1'
