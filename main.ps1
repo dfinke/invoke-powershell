@@ -16,11 +16,11 @@ $irmParams = @{
 
 Invoke-RestMethod @irmParams
 
-''
-'Show-GitHubToken'
-''
-Get-GitHubToken
-(Get-GitHubToken).GetType()
+# ''
+# 'Show-GitHubToken'
+# ''
+# Get-GitHubToken
+# (Get-GitHubToken).GetType()
 
 
 #$eventPayload | ConvertTo-Json -depth 5

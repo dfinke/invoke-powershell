@@ -68,13 +68,18 @@ function Get-Ref {
 }
 
 function Get-GitHubToken {
-    $env:GITHUB_TOKEN
-    # $token = $env:GITHUB_TOKEN
-    # if ($null -eq $token -or $token.Trim().Length() -eq 0) {
-    #     throw "GitHub Token not found"
-    # }
+    $token = $env:GITHUB_TOKEN
 
-    # $token
+    if ($null -eq $token) {
+        throw @'
+GitHub Token needs to be provided
+For example -
+    env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }
+'@
+    }
+
+    $token
 }
 
 function Get-PullURI {
@@ -90,12 +95,12 @@ function Get-Header {
 
 function Get-Body {
     @"
-{
-	"title": "$(Get-CommitMessage)",
-	"head": "$(Get-Ref)",
-	"base": "$(Get-DefaultBranch)"
-}
-"@
+        {
+            "title": "$(Get-CommitMessage)",
+            "head": "$(Get-Ref)",
+            "base": "$(Get-DefaultBranch)"
+        }
+        "@
 }
 
 function Get-InvokeRestMethodParams {
